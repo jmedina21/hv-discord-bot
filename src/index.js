@@ -27,6 +27,16 @@ client.on('interactionCreate', async (interaction) => {
             console.error(error)
         }
     }
+
+    if(interaction.commandName === 'hv') {
+        const id = interaction.options.getInteger('id')
+        try {
+            const res = await axios.get(`${process.env.HV_URL}${id}`)
+            await interaction.reply(res.data.image)
+        } catch (error) {
+            console.error(error)
+        }
+    }
 })
 
 client.login(process.env.BOT_TOKEN)
