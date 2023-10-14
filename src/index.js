@@ -1,4 +1,5 @@
 require("dotenv").config();
+const axios = require('axios')
 const { Client, IntentsBitField } = require('discord.js')
 
 const client = new Client({
@@ -11,11 +12,21 @@ const client = new Client({
 })
 
 client.on('ready', (c) => {
-    console.log(`Logged in as ${c.user.tag}!`)
+    console.log(`${c.user.tag} is online!`)
 })
 
-client.on('messageCreate', (msg) => {
-    console.log(msg)
+client.on('interactionCreate', async (interaction) => {
+    if (!interaction.isChatInputCommand()) return
+
+    if(interaction.commandName === 'random-hv') {
+        const random = Math.floor(Math.random() * 3749)
+        try {
+            const res = await axios.get(`${process.env.HV_URL}${random}`)
+            await interaction.reply(res.data.image)
+        } catch (error) {
+            console.error(error)
+        }
+    }
 })
 
 client.login(process.env.BOT_TOKEN)
