@@ -39,7 +39,7 @@ async function trivia(interaction) {
             
             await interaction.reply({ embeds: [embed], components: [row] });
 
-            setTimeout(() => determineWinners(interaction), 10000);
+            setTimeout(() => determineWinners(interaction), interaction.options.getInteger('duration') * 1000);
         } catch (error) {
             console.error(error);
         }

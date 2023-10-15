@@ -21,6 +21,28 @@ const commands = [
     {
         name: 'hv-trivia',
         description: 'Starts H&V trivia!',
+        options: [
+            {
+                name: 'duration',
+                description: 'How long the trivia will last',
+                type: ApplicationCommandOptionType.Integer,
+                required: true,
+                choices: [
+                    {
+                        name: '5 seconds',
+                        value: 5
+                    },
+                    {
+                        name: '10 seconds',
+                        value: 10
+                    },
+                    {
+                        name: '15 seconds',
+                        value: 15
+                    }
+                ]
+            }
+        ]
     }
 ];
 
