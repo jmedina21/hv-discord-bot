@@ -2,7 +2,6 @@ require("dotenv").config();
 const axios = require('axios')
 const { EmbedBuilder, ButtonBuilder, ActionRowBuilder } = require('discord.js')
 
-
 let currentTrivia = {
     answer: '',
     participants: {}
@@ -26,12 +25,12 @@ async function trivia(interaction) {
             
             const heroButton = new ButtonBuilder()
                 .setCustomId('hero')
-                .setLabel('Hero')
+                .setLabel('Hero 😇')
                 .setStyle('Success');
 
             const villainButton = new ButtonBuilder()
                 .setCustomId('villain')
-                .setLabel('Villain')
+                .setLabel('Villain 😈')
                 .setStyle('Danger');
 
             const row = new ActionRowBuilder()
