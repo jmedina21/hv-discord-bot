@@ -17,6 +17,10 @@ const commands = [
                 required: true
             }
         ]
+    },
+    {
+        name: 'hv-trivia',
+        description: 'Starts H&V trivia!',
     }
 ];
 
