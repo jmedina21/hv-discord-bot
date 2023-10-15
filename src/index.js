@@ -1,6 +1,6 @@
 require("dotenv").config();
 const axios = require('axios')
-const { Client, IntentsBitField } = require('discord.js')
+const { Client, IntentsBitField, EmbedBuilder } = require('discord.js')
 
 const client = new Client({
     intents : [
@@ -30,9 +30,14 @@ client.on('interactionCreate', async (interaction) => {
 
     if(interaction.commandName === 'hv') {
         const id = interaction.options.getInteger('id')
+        if (id < 0 || id > 3749) return interaction.reply('Invalid ID, there are only 3750 H&Vs!')
         try {
             const res = await axios.get(`${process.env.HV_URL}${id}`)
-            await interaction.reply(res.data.image)
+            const embed = new EmbedBuilder()
+                .setTitle(`Hero & Villains # ${id}`)
+                .setImage(res.data.image)
+                .setColor('#95E2AF')
+            await interaction.reply({embeds: [embed]})
         } catch (error) {
             console.error(error)
         }
