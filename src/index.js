@@ -26,9 +26,6 @@ client.on('interactionCreate', async (interaction) => {
     if(!interaction.isButton()) {
         getHV(interaction)
     }
-
-    
-
 })
 
 client.login(process.env.BOT_TOKEN)
