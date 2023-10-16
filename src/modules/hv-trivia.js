@@ -44,7 +44,7 @@ async function trivia(interaction) {
         }
     } else if (interaction.isButton()) {
         currentTrivia.participants[interaction.user.id] = interaction.customId;
-        interaction.reply(`Your answer is recorded!`, { ephemeral: true });
+        await interaction.reply({ content: 'Your answer has been recorded!', ephemeral: true });
     }
 }
 
